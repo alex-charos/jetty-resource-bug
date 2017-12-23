@@ -1,0 +1,17 @@
+version: '3'
+services:
+  jetty_host:
+    build: ./jetty-conf
+    ports:
+     - "8080:8080"
+    networks:
+     - jetty_net
+  nginx:
+    build: ./nginx-conf
+    ports:
+     - "80:80"
+    networks:
+     - jetty_net
+networks:
+    jetty_net:
+        driver: bridge
